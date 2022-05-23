@@ -1,38 +1,30 @@
-import React, { Component } from 'react';
-import navbar from './component/navbar.js';
-import Home from './component/Home.js';
-import About from './component/About.js';
-import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import Contact from './component/Contact.js';
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-       <Router>
-        <navbar/>
-        <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-        </ul>    
-        </div>
-        <div>
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/contact" element={<Contact/>} />
-          </Routes>
-        </div>     
-       </Router>
-   );
-  }
+import Navbar from './components/navbar'
+
+import Home from './Containers/Home'
+import About from './Containers/about'
+import Perfil from './Containers/Perfil'
+import SignOut from './Containers/SignOut'
+import Calendario from './Containers/calendario'
+
+function App() {
+  return (
+    <Router>
+     
+      <Routes>
+       <Route path='/Home' element={<Home/>} />
+       <Route path='/Perfil' element={<Perfil/>} />
+       <Route path='/about' element={<About/>} />
+       <Route path='/SignOut' element={<SignOut/>} />
+       <Route path='/Calendario' element={<Calendario/>} />
+
+
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
