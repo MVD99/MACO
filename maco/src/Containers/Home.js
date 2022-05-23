@@ -10,7 +10,8 @@ import Avatar from '@mui/material/Avatar';
 import { margin } from '@mui/system';
 import Button from '@mui/material/Button';
 import Navbar from '../components/navbar'
- 
+
+import { NavLink } from 'react-router-dom';
 
 import { NavLink as Link } from 'react-router-dom';
 
@@ -21,6 +22,26 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+}));
+
+const LayoutContainerCima = styled('div')(() => ({
+  width: '100%',
+  height:'15vw',
+  bgcolor:'#ffa ',
+  border:'1px solid #000',
+  justifyContent:'center',
+  alignItems:'center',
+  display: 'flex'
+
+}));
+const LayoutContainerBaixo = styled('div')(() => ({
+  width: '100%',
+  height:'5vw',
+  border:'1px solid #000',
+  justifyContent:'center',
+  alignItems:'center',
+  paddingTop:'1vw'
+
 }));
 
 function Home () {
@@ -42,44 +63,70 @@ function Home () {
     <Navbar />
 
         <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-          <Grid sx={{bgcolor:"#0f0"}} item xs={3}>
-            <div style = {{justifyContent:'center',allignItems:'center',display: 'flex'}}>
+          <Grid sx={{border:1}} item xs={3}>
+            <div style = {{justifyContent:'center',alignItems:'center',display: 'flex'}}>
               <Avatar  alt="ERROR" src={ require("../image/avatar.jpg")}  sx={{ width: "16.5vw", height: "16.5vw"}} />
               
           </div>
-          <h1 style = {{paddingTop:"0.3vw",justifyContent:'center',allignItems:'center',display: 'flex'}}>Andre</h1>
+          <h1 style = {{paddingTop:"0.3vw",justifyContent:'center',alignItems:'center',display: 'flex'}}>Andre</h1>
 
 
           </Grid>
 
-          <Grid container sx={{bgcolor:"#ff0",height:"25vw"}} item xs={9}>
-            <Grid sx={{bgcolor:"#ff0",paddingTop:"5vw"}} item xs={12}>
+          <Grid sx={{paddingRight:'0.5vw'}}container  item xs={9}>
+          <LayoutContainerCima >
 
-            </Grid>
+              <Avatar  alt="ERROR" src={ require("../image/MACO_Logo.png")}  sx={{height: "100%",width:'15vw'}} />
             
-            <Grid sx={{bgcolor:"#ffaf",justifyContent:'center',allignItems:'center',display:"flex",paddingTop:"5vw"}}   item xs={4}>
-              <Link to="/calendario">
-              <Button href = '/calendario' sx = {{margin:"auto"}}variant="contained" disableElevation>
-                Ver calendário
-              </Button>
-              </Link>
-            
-            
-            </Grid>
-            <Grid  sx={{bgcolor:"#0f0",justifyContent:'center',allignItems:'center',display:"flex"}} item xs={4}>
-              <Button sx = {{margin:"auto"}}variant="contained" disableElevation>
-                Agendar Consulta
-              </Button>
-            </Grid>
-            <Grid  sx={{bgcolor:"#0ff",justifyContent:'center',allignItems:'center',display:"flex"}} item xs={4}>
-              <Button sx = {{margin:"auto"}}variant="contained" disableElevation>
-                Pesquisar paciente
-              </Button>
-            </Grid>
+            </LayoutContainerCima>
+          <LayoutContainerBaixo >
+            <Grid container spacing={1}>
+              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
+                <Button variant='contained'>
+                  Ver calendário
+                  </Button>
+              </Grid>
+              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
+                <Button variant='contained'>
+                  Marcar Consulta
+                  </Button>
+                
+                </Grid>
+                <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
+                  <NavLink to='/PesquisaUtente'>
 
+                  <Button variant='contained'>
+                    Pesquisar paciente
+                  </Button>
+
+                  </NavLink>
+                </Grid>
+            </Grid>
+          </LayoutContainerBaixo>
           </Grid>
         </Grid>
-
+      <Grid sx = {{marginTop:'10px'}} container spacing={2}>
+        <Grid sx={{border:1,height:'24vw',Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
+          <div>
+            <Button variant='contained'>
+                    Adicionar Paciente
+            </Button>
+          </div>
+        </Grid>
+        <Grid  item xs={9}>
+          <Grid  sx ={{height:'24vw'}}container spacing={2}>
+            <Grid sx={{border:1}} item xs={8}>
+              <h1>Proxima consulta em: 05 minutos</h1>
+            </Grid>
+            <Grid sx={{border:1}} item xs={4}>
+              <Button variant='contained'>
+                      Ver detalhes do próximo paciente
+              </Button>
+            </Grid>
+                
+          </Grid>
+        </Grid>
+       </Grid>
 
     </React.Fragment>
     );

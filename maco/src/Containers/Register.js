@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 
 
-function SignOut  ()  {
+function Register  ()  {
   return (
     <>
 
@@ -23,7 +23,7 @@ function SignOut  ()  {
             pw
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',border:1}}>
-            kepp logged in
+            Comfirm password
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',border:1}}>
             login
@@ -34,4 +34,4 @@ function SignOut  ()  {
   );
 };
 
-export default SignOut;
+export default Register;
