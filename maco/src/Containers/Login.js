@@ -6,17 +6,20 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 import { NavLink } from 'react-router-dom';
 
+import NavbarLogin from '../components/NavbarLogin'
 
-import NavbarRegister from '../components/NavbarRegister';
 
-function Register  ()  {
+function Login  ()  {
   return (
     <>
-      <NavbarRegister />
+
+      <NavbarLogin />
       <Container sx={{width:'30vw'}} >
         <Grid container spacing={1}>
           <Grid item xs={12} sx={{height:'23vw',Width:"flex",justifyContent:'center',allignItems:'center',display: 'flex'}}>
@@ -27,17 +30,18 @@ function Register  ()  {
             </TextField>
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField type ="password"variant='outlined' label ='Password' sx ={{width:'99%'}}>
+            <TextField id="pw"type='password'variant='outlined' label ='Password' sx ={{width:'99%'}}>
             </TextField>
           </Grid>
-          <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField type ="password" variant='outlined' label ='Confirm Password' sx ={{width:'99%'}}>
-            </TextField>
+          <Grid item xs={12} sx={{justifyContent:'center',alignItems:'center',display: 'flex'}}>
+             <FormGroup sx={{alignItems:'left'}}>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Keep Signed in" />
+             </FormGroup>
           </Grid>
-          <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
+          <Grid item xs={12} sx={{justifyContent:'center',alignItems:'center',display: 'flex'}}>
             <NavLink to='/Home'>
               <Button variant='contained'>
-                      Register
+                      Login
               </Button>
             </NavLink>
           </Grid>
@@ -47,4 +51,4 @@ function Register  ()  {
   );
 };
 
-export default Register;
+export default Login;

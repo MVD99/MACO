@@ -8,8 +8,7 @@ import {
   NavBtnLink
 } from './NavbarElements';
 
-import { SignOutButton } from './signoutbutton';
-const Navbar = () => {
+const Navbar2 = () => {
   return (
     <>
       <Nav>
@@ -22,6 +21,15 @@ const Navbar = () => {
           <NavLink to='/Home' activeStyle>
             Home
           </NavLink>
+          <NavLink to='/calendario' activeStyle>
+            Calendário
+          </NavLink>
+          <NavLink to='/MarcarConsulta' activeStyle>
+            Agendar
+          </NavLink>
+          <NavLink to='/PesquisaUtente' activeStyle>
+            Pacientes
+          </NavLink>
           <NavLink to='/about' activeStyle>
             About
           </NavLink>
@@ -29,10 +37,12 @@ const Navbar = () => {
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-      
+        <NavBtn>
+          <NavBtnLink to='/Login'>Sign Out</NavBtnLink>
+        </NavBtn>
       </Nav>
     </>
   );
 };
 
-export default Navbar;
+export default Navbar2;

@@ -82,15 +82,18 @@ function Home () {
           <LayoutContainerBaixo >
             <Grid container spacing={1}>
               <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <Button variant='contained'>
-                  Ver calendário
-                  </Button>
+                <NavLink to='/MarcarConsulta'>
+                    <Button variant='contained'>
+                      Ver Calendário
+                    </Button>
+                </NavLink>
               </Grid>
               <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <Button variant='contained'>
-                  Marcar Consulta
-                  </Button>
-                
+                <NavLink to='/MarcarConsulta'>
+                    <Button variant='contained'>
+                      Marcar Consulta
+                    </Button>
+                </NavLink>
                 </Grid>
                 <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
                   <NavLink to='/PesquisaUtente'>
@@ -106,7 +109,7 @@ function Home () {
           </Grid>
         </Grid>
       <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-        <Grid sx={{border:1,height:'24vw',Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
+        <Grid sx={{border:1,height:'auto',Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
           <div>
             <Button variant='contained'>
                     Adicionar Paciente
@@ -114,14 +117,17 @@ function Home () {
           </div>
         </Grid>
         <Grid  item xs={9}>
-          <Grid  sx ={{height:'24vw'}}container spacing={2}>
+          <Grid  sx ={{}}container spacing={2}>
             <Grid sx={{border:1}} item xs={8}>
               <h1>Proxima consulta em: 05 minutos</h1>
             </Grid>
             <Grid sx={{border:1}} item xs={4}>
-              <Button variant='contained'>
-                      Ver detalhes do próximo paciente
-              </Button>
+              <NavLink to='/PerfilPaciente'>
+
+                <Button variant='contained'>
+                        Ver detalhes do próximo paciente
+                </Button>
+              </NavLink>
             </Grid>
                 
           </Grid>

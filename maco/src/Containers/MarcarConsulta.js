@@ -21,7 +21,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 
-function Calendario () {
+function MarcarConsulta () {
     const [page, setPage] = React.useState(1);
     const handleChange = (event, value) => {
         setPage(value);
@@ -67,4 +67,4 @@ function Calendario () {
     );
     };
 
-    export default Calendario;
+    export default MarcarConsulta;
