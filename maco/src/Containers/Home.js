@@ -65,16 +65,55 @@ function Home () {
               </Link>
             
             
+<<<<<<< Updated upstream
+=======
+            </LayoutContainerCima>
+          <LayoutContainerBaixo >
+            <Grid container spacing={1}>
+              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
+                <NavLink to='/Calendario'>
+                    <Button variant='contained'>
+                      Ver Calendário
+                    </Button>
+                </NavLink>
+              </Grid>
+              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
+                <NavLink to='/Calendario'>
+                    <Button variant='contained'>
+                      Marcar Consulta
+                    </Button>
+                </NavLink>
+                </Grid>
+                <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
+                  <NavLink to='/PesquisaUtente'>
+
+                  <Button variant='contained'>
+                    Pesquisar paciente
+                  </Button>
+
+                  </NavLink>
+                </Grid>
+>>>>>>> Stashed changes
             </Grid>
             <Grid  sx={{bgcolor:"#0f0",justifyContent:'center',allignItems:'center',display:"flex"}} item xs={4}>
               <Button sx = {{margin:"auto"}}variant="contained" disableElevation>
                 Agendar Consulta
               </Button>
             </Grid>
+<<<<<<< Updated upstream
             <Grid  sx={{bgcolor:"#0ff",justifyContent:'center',allignItems:'center',display:"flex"}} item xs={4}>
               <Button sx = {{margin:"auto"}}variant="contained" disableElevation>
                 Pesquisar paciente
               </Button>
+=======
+            <Grid sx={{border:1,display:'flex'}} item xs={4}>
+              <NavLink to='/PerfilPaciente'>
+
+                <Button variant='contained'sx ={{display:'flex',width:'99%'}}>
+                        Ver detalhes do próximo paciente
+                </Button>
+              </NavLink>
+>>>>>>> Stashed changes
             </Grid>
 
           </Grid>
