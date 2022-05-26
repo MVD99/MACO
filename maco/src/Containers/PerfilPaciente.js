@@ -16,7 +16,7 @@ import Stack from '@mui/material/Stack';
 
 import { pacienteConsultas as consultas } from '../data/pacienteConsultas';
 
-
+import FormDialog from '../components/AtualizarPacientePopup';
 
 
 function PerfilPaciente () {
@@ -39,26 +39,29 @@ function PerfilPaciente () {
                         <h1 style = {{justifyContent:'center',alignItems:'center',display: 'flex'}}>Andre</h1>
                     </Grid>
                     <Grid sx= {{border:1}}>
-                        <Grid sx={{height:'10vw',paddingTop:'1vw',paddingBottom:'1vw',border:1, justifyContent:'center',alignItems:'center',display: 'flex'}}>
-                            <Stack direction='column' spacing={5}>
-                        
-                            <h1>
-                                infomarcao
-                            </h1>
-                            <h1>
-                                infomarcao
-                            </h1>
-                            </Stack>
+                        <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:1, justifyContent:'center',alignItems:'center',display: 'flex'}}>
+                            <Grid sx={{display:'flex'}}direction='column' spacing={5}>          
+                                <h3>
+                                    Data de nascimento: 1/2/1960
+                                </h3>
+                                <h3>
+                                    Género Masculino
+                                </h3>
+                                <h2>
+                                    Descrição:
+                                </h2>
+                                <h3>
+                                    1-Diabético
+                                </h3>
+                                <h3>
+                                    Nota: Marido Sra. Fontes operado ao joelho ha 3 meses.
+                                </h3>
+                            </Grid>
                         </Grid>
                         <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:1, justifyContent:'center',alignItems:'center',display: 'flex'}}>
-                            <Button variant='contained'>
-                                Marcar Consulta
-                            </Button>
-                        </Grid>
-                        <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:1, justifyContent:'center',alignItems:'center',display: 'flex'}}>
-                            <Button variant='contained'>
-                                Marcar Consulta
-                            </Button>
+                            <FormDialog>
+                                Atualizar Perfil
+                            </FormDialog>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -104,7 +107,7 @@ function PerfilPaciente () {
 
                 </Grid>
             </Grid>
-
+            
         </React.Fragment>
     );
     };
