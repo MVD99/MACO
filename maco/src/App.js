@@ -8,11 +8,11 @@ import Home from './Containers/Home'
 import About from './Containers/about'
 import Perfil from './Containers/Perfil'
 import Login from './Containers/Login'
-import Calendario from './Containers/calendario'
+
 import PesquisaUtente from './Containers/PesquisaUtente';
 import Register from './Containers/Register';
 import PerfilPaciente from './Containers/PerfilPaciente';
-import MarcarConsulta from './Containers/MarcarConsulta';
+import Calendario from './Containers/Calendario';
 import { red } from '@mui/material/colors';
 
 import { ThemeProvider, createTheme} from '@mui/material/styles';
@@ -44,7 +44,7 @@ function App() {
        <Route path='/PesquisaUtente' element={<PesquisaUtente/>} />
        <Route path='/Register' element={<Register/>} />
        <Route path='/PerfilPaciente' element={<PerfilPaciente/>} />
-       <Route path='/MarcarConsulta' element={<MarcarConsulta/>} />
+       <Route path='/Calendario' element={<Calendario/>} />
 
 
       </Routes>

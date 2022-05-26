@@ -82,14 +82,14 @@ function Home () {
           <LayoutContainerBaixo >
             <Grid container spacing={1}>
               <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/MarcarConsulta'>
+                <NavLink to='/Calendario'>
                     <Button variant='contained'>
                       Ver Calendário
                     </Button>
                 </NavLink>
               </Grid>
               <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/MarcarConsulta'>
+                <NavLink to='/Calendario'>
                     <Button variant='contained'>
                       Marcar Consulta
                     </Button>

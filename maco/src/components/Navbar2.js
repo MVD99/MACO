@@ -24,7 +24,7 @@ const Navbar2 = () => {
           <NavLink to='/calendario' activeStyle>
             Calendário
           </NavLink>
-          <NavLink to='/MarcarConsulta' activeStyle>
+          <NavLink to='/Calendario' activeStyle>
             Agendar
           </NavLink>
           <NavLink to='/PesquisaUtente' activeStyle>
