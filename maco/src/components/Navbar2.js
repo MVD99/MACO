@@ -12,7 +12,7 @@ const Navbar2 = () => {
   return (
     <>
       <Nav>
-        <NavLink to='/Home'>
+        <NavLink to='/'>
             <h1>MACO</h1>
         </NavLink>
         <Bars />
@@ -23,9 +23,6 @@ const Navbar2 = () => {
           </NavLink>
           <NavLink to='/calendario' activeStyle>
             Calendário
-          </NavLink>
-          <NavLink to='/Calendario' activeStyle>
-            Agendar
           </NavLink>
           <NavLink to='/PesquisaUtente' activeStyle>
             Pacientes

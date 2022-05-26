@@ -9,7 +9,8 @@ import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import { margin } from '@mui/system';
 import Button from '@mui/material/Button';
-import Navbar from '../components/navbar'
+import Navbar2 from '../components/Navbar2'
+import Stack from '@mui/material/Stack';
 
 import { NavLink } from 'react-router-dom';
 
@@ -60,80 +61,38 @@ function Home () {
 
 
     <React.Fragment>
-    <Navbar />
-
-        <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-          <Grid sx={{border:1}} item xs={3}>
-            <div style = {{justifyContent:'center',alignItems:'center',display: 'flex'}}>
-              <Avatar  alt="ERROR" src={ require("../image/avatar.jpg")}  sx={{ width: "16.5vw", height: "16.5vw"}} />
-              
-          </div>
-          <h1 style = {{paddingTop:"0.3vw",justifyContent:'center',alignItems:'center',display: 'flex'}}>Andre</h1>
-
-
-          </Grid>
-
-          <Grid sx={{paddingRight:'0.5vw'}}container  item xs={9}>
-          <LayoutContainerCima >
-
-              <Avatar  alt="ERROR" src={ require("../image/MACO_Logo.png")}  sx={{height: "100%",width:'15vw'}} />
-            
-            </LayoutContainerCima>
-          <LayoutContainerBaixo >
-            <Grid container spacing={1}>
-              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/Calendario'>
-                    <Button variant='contained'>
-                      Ver Calendário
-                    </Button>
-                </NavLink>
-              </Grid>
-              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/Calendario'>
-                    <Button variant='contained'>
-                      Marcar Consulta
-                    </Button>
-                </NavLink>
-                </Grid>
-                <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                  <NavLink to='/PesquisaUtente'>
-
-                  <Button variant='contained'>
-                    Pesquisar paciente
-                  </Button>
-
-                  </NavLink>
-                </Grid>
-            </Grid>
-          </LayoutContainerBaixo>
+    <Navbar2 />
+    <Grid sx = {{marginTop:'10px'}} container spacing={2}>
+        <Grid sx={{justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
+          <Grid sx= {{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}}>
+            <Avatar alt="ERROR" src={ require("../image/avatar.jpg")}  sx={{ width: "16.5vw", height: "16.5vw"}} />
           </Grid>
         </Grid>
-      <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-        <Grid sx={{border:1,height:'auto',Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
-          <div>
-            <Button variant='contained'>
-                    Adicionar Paciente
-            </Button>
-          </div>
+        <Grid sx={{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={6}>
+          <Avatar  sx={{width:'99%',height:'99%' }}  alt="ERROR" src={ require("../image/calendar.jpg")} />
         </Grid>
-        <Grid  item xs={9}>
-          <Grid  sx ={{}}container spacing={2}>
-            <Grid sx={{border:1}} item xs={8}>
-              <h1>Proxima consulta em: 05 minutos</h1>
-            </Grid>
-            <Grid sx={{border:1}} item xs={4}>
-              <NavLink to='/PerfilPaciente'>
+        <Grid sx={{border:1,border:1, justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
+          <Stack sx = {{justifyContent:'center',alignItems:'center',display: 'flex'}}direction='column' spacing={5}>
+                        
+            <h2>
+                Proxima Consulta em: 5 minutos
+            </h2>
 
-                <Button variant='contained'>
-                        Ver detalhes do próximo paciente
-                </Button>
-              </NavLink>
-            </Grid>
-                
-          </Grid>
+            <NavLink to = '/Home'>
+              <Button  variant='contained'>
+                  Adicionar Consulta
+              </Button>
+            </NavLink>
+            <NavLink to = '/FormPaciente'>
+              <Button  variant='contained'>
+                  Adicionar Paciente
+              </Button>
+            </NavLink>
+
+          </Stack>
         </Grid>
-       </Grid>
 
+    </Grid>
     </React.Fragment>
     );
   }

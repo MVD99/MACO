@@ -3,23 +3,25 @@ import React, { Component } from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
-import Navbar from '../components/navbar'
+import Navbar2 from '../components/Navbar2'
 import {utentes} from '../data/utentes.js'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/system/Box';
+import Button from '@mui/material/Button';
+import { NavLink } from 'react-router-dom';
+import Container from '@mui/material/Container';
 
 function PesquisaUtente() {
   return (
     <React.Fragment>
-      <Navbar />
-
-      <h1>Pesquisa de Utentes</h1>
-      
-
+      <Navbar2 />
+      <Container sx={{justifyContent:'center',alignItems:'center',display:'flex',paddingTop:'5vw',pb:'5vw'}}>
+        <h1 sx={{justifyContent:'center',alignItems:'center'}}>Pesquisa de Utentes</h1>
+      </Container>
      
-        <Grid sx={{height:'12vw',border:1,Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={12}>
+        <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={12}>
           <Autocomplete
-            sx={{width:'100%', alignItems:'center', justifyContent:'center'}}
+            sx={{width:'50%', alignItems:'center', justifyContent:'center'}}
             freeSolo
             id="Search Name"
             disableClearable
@@ -37,14 +39,14 @@ function PesquisaUtente() {
           />
         </Grid>
 
-        <Grid sx={{height:'6vw',border:1,Width:"flex",justifyContent:'center',allignItems:'center',display: 'flex',}} item xs={12}>
-        <Box sx={{marginTop:'1.5vw'}}><h1> OU  </h1> </Box>
+        <Grid sx={{height:'6vw',Width:"flex",justifyContent:'center',allignItems:'center',display: 'flex',}} item xs={12}>
+        <Box sx={{marginTop:'1.5vw'}}><h2> OU  </h2> </Box>
         </Grid>
 
-        <Grid sx={{height:'12vw',border:1,Width:"flex",justifyContent:'center',allignItems:'center',display: 'flex'}} item xs={12}>
+        <Grid sx={{Width:"flex",justifyContent:'center',allignItems:'center',display: 'flex'}} item xs={12}>
 
           <Autocomplete
-            sx={{width:'100%'}}
+            sx={{width:'50%'}}
             freeSolo
             id="Search Name"
             disableClearable
@@ -62,15 +64,14 @@ function PesquisaUtente() {
           />
 
         </Grid>
+        <Grid sx={{paddingTop:'5vw',Width:"flex",justifyContent:'center',allignItems:'center',display: 'flex'}} item xs={12}>
+        <NavLink to = '/PerfilPaciente'>
+          <Button variant='contained'>
+              GO
+          </Button>
 
-
-
-      
-      
-
-
-     
-
+          </ NavLink>
+        </Grid>
     </React.Fragment>
   );
 }
