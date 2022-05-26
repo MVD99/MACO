@@ -104,6 +104,7 @@ function Home () {
 
                   </NavLink>
                 </Grid>
+
             </Grid>
           </LayoutContainerBaixo>
           </Grid>
@@ -120,6 +121,14 @@ function Home () {
           <Grid  sx ={{}}container spacing={2}>
             <Grid sx={{border:1}} item xs={8}>
               <h1>Proxima consulta em: 05 minutos</h1>
+
+            </Grid>
+            <Grid  sx={{bgcolor:"#0f0",justifyContent:'center',allignItems:'center',display:"flex"}} item xs={4}>
+              <Button sx = {{margin:"auto"}}variant="contained" disableElevation>
+                Agendar Consulta
+              </Button>
+            </Grid>
+
             </Grid>
             <Grid sx={{border:1}} item xs={4}>
               <NavLink to='/PerfilPaciente'>
