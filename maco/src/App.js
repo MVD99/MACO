@@ -7,6 +7,7 @@ import Navbar from './components/navbar'
 import Home from './Containers/Home'
 import About from './Containers/about'
 import Perfil from './Containers/Perfil'
+
 import Login from './Containers/Login'
 
 import PesquisaUtente from './Containers/PesquisaUtente';
@@ -15,6 +16,7 @@ import PerfilPaciente from './Containers/PerfilPaciente';
 import Calendario from './Containers/Calendario';
 import FormPaciente from './Containers/FormPaciente';
 import { red } from '@mui/material/colors';
+
 
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 
@@ -31,6 +33,7 @@ const theme = createTheme({
     },
   },
 });
+
 
 function App() {
   return (
