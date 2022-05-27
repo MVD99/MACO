@@ -16,7 +16,7 @@ import { NavLink } from 'react-router-dom';
 
 import { NavLink as Link } from 'react-router-dom';
 
-
+import DemoApp from '../components/DemoApp';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -69,7 +69,21 @@ function Home () {
           </Grid>
         </Grid>
         <Grid sx={{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={6}>
-          <Avatar  sx={{width:'99%',height:'99%' }}  alt="ERROR" src={ require("../image/calendar.jpg")} />
+         
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
         </Grid>
         <Grid sx={{border:1,border:1, justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
           <Stack sx = {{justifyContent:'center',alignItems:'center',display: 'flex'}}direction='column' spacing={5}>
