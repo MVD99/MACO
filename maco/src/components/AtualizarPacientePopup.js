@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react'
+
 export default function AtualizarPacientePopup() {
 
   const [open, setOpen] = React.useState(false);
@@ -26,9 +27,12 @@ export default function AtualizarPacientePopup() {
     console.log(Descricao)
     localStorage.setItem('DescricaoPaciente',Descricao)
     localStorage.setItem('Notas',Notas)
+    window.location.reload(false);
 
     setOpen(false);
   };
+
+  
 
   return (
     <div>
