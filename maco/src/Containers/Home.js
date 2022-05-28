@@ -69,19 +69,7 @@ function Home () {
           </Grid>
         </Grid>
         <Grid sx={{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={6}>
-         
-
-
-
-
-
-
         
-
-
-
-
-
 
 
         </Grid>
@@ -104,73 +92,6 @@ function Home () {
             </NavLink>
 
           </Stack>
-          <Grid sx={{paddingRight:'0.5vw'}}container  item xs={9}>
-          <LayoutContainerCima >
-
-              <Avatar  alt="ERROR" src={ require("../image/MACO_Logo.png")}  sx={{height: "100%",width:'15vw'}} />
-            
-            </LayoutContainerCima>
-          <LayoutContainerBaixo >
-            <Grid container spacing={1}>
-              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/Calendario'>
-                    <Button variant='contained'>
-                      Ver Calendário
-                    </Button>
-                </NavLink>
-              </Grid>
-              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/Calendario'>
-                    <Button variant='contained'>
-                      Marcar Consulta
-                    </Button>
-                </NavLink>
-                </Grid>
-                <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                  <NavLink to='/PesquisaUtente'>
-
-                  <Button variant='contained'>
-                    Pesquisar paciente
-                  </Button>
-
-                  </NavLink>
-                </Grid>
-
-            </Grid>
-          </LayoutContainerBaixo>
-          </Grid>
-        </Grid>
-      <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-        <Grid sx={{border:1,height:'auto',Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
-          <div>
-            <Button variant='contained'>
-                    Adicionar Paciente
-            </Button>
-          </div>
-        </Grid>
-        <Grid  item xs={9}>
-          <Grid  sx ={{}}container spacing={2}>
-            <Grid sx={{border:1}} item xs={8}>
-              <h1>Proxima consulta em: 05 minutos</h1>
-
-            </Grid>
-            <Grid  sx={{bgcolor:"#0f0",justifyContent:'center',allignItems:'center',display:"flex"}} item xs={4}>
-              <Button sx = {{margin:"auto"}}variant="contained" disableElevation>
-                Agendar Consulta
-              </Button>
-            </Grid>
-
-            </Grid>
-            <Grid sx={{border:1}} item xs={4}>
-              <NavLink to='/PerfilPaciente'>
-
-                <Button variant='contained'>
-                        Ver detalhes do próximo paciente
-                </Button>
-              </NavLink>
-            </Grid>
-                
-          </Grid>
         </Grid>
 
     </Grid>
