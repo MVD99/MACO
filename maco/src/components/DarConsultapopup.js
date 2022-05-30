@@ -31,6 +31,16 @@ export default function MarcarConsultaPopup(props) {
     if (props.close!=null) props.close()
   
   };
+
+  const handleApagar = () => {
+    setOpen(false);
+    if (props.close!=null) props.close()
+    if (props.delete!=null) props.delete()
+  
+  };
+
+
+
   const handleCloseSend = () => {
 
     console.log("AAAAAAAAAAAAAAAAA"+nomeUtente)
@@ -43,7 +53,8 @@ export default function MarcarConsultaPopup(props) {
     //window.location.reload(false);
     
     setOpen(false);
-    if (props.submit!=null) props.submit(nomeUtente,NumeroUtente)
+    if (props.submit!=null) props.submit(Notas)
+    console.log("NOTAS")
     if (props.close!=null) props.close()
   }
 
@@ -55,13 +66,13 @@ export default function MarcarConsultaPopup(props) {
         Marcar Consulta
       </Button> */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Marcar Consulta para o dia 30/2/2022</DialogTitle>
+        
         <DialogContent>
           <form noValidate autoComplete="off" >
           <Autocomplete
             sx={{width:'100%', alignItems:'center', justifyContent:'center',paddingTop:'0.5vw',paddingBottom:'0.25vw'}}
             disabled
-            defaultValue={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "}
+            defaultValue={props.descricao}
             freeSolo
             id="Titulo"
             disableClearable
@@ -85,7 +96,7 @@ export default function MarcarConsultaPopup(props) {
             sx={{width:'100%', alignItems:'center', justifyContent:'center',paddingTop:'0.25vw',paddingBottom:'0.25vw'}}
             freeSolo
             disabled
-            defaultValue={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "}
+            defaultValue={props.paciente}
             id="Search Name"
             disableClearable
             options={utentes.map((option) => option.Name)}
@@ -143,8 +154,9 @@ export default function MarcarConsultaPopup(props) {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseSend}>Marcar</Button>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleCloseSend}>Submeter</Button>
+          <Button onClick={handleClose}>Cancelar</Button>
+          <Button onClick={handleApagar}>Apagar</Button>
         </DialogActions>
       </Dialog>
     </div>

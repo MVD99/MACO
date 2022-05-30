@@ -7,12 +7,14 @@ import MarcarConsultaPopup from './MarcarConsultaPopup'
 import popup from './CalendarPopup.js'
 // import {utentes} from './data/utentes.js'
 import Autocomplete from '@mui/material/Autocomplete';
-
+import DarConsultaPopup from './DarConsultapopup'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 
 import CalendarPopup from '../components/CalendarPopup';
 var calendarApi = null
+var select = null
+var click = null
 export default class DemoApp extends React.Component {
 
   constructor(props) {
@@ -26,7 +28,10 @@ export default class DemoApp extends React.Component {
 
     state = {
     weekendsVisible: true,
-    currentEvents: []
+    currentEvents: [],
+    daropen: false, //!importante
+
+
   }
 
   
@@ -64,6 +69,7 @@ export default class DemoApp extends React.Component {
           />
       </div>
       { this.state.popupopen && <MarcarConsultaPopup close={this.handlePopupClose.bind(this)} submit={this.handlePopupSubmit.bind(this)} />} 
+      { this.state.daropen &&   <DarConsultaPopup    close={this.handlePopupClose.bind(this)} descricao= { click.event.title } paciente={ click.event.extendedProps.paciente} delete={this.handleapagar.bind(this)}/>}
       </>
     )
   }
@@ -98,9 +104,12 @@ export default class DemoApp extends React.Component {
   //     </div>
   //   )
   // }
-
+  handleapagar = () => {
+    click.event.remove()
+  }
   handlePopupClose = () => {
     this.setState({popupopen: false});
+    this.setState({daropen: false});
   }
   
   handlePopupSubmit = (title, paciente) => {
@@ -109,6 +118,26 @@ export default class DemoApp extends React.Component {
       {popupstate: result}
     );
     console.log(result);
+          // while(this.state.popupopen){
+        //   console.log("waiting"); //! wait for popup to close
+        // }
+        if (title) {
+          calendarApi.addEvent({
+            id: createEventId(),
+            title,
+            start: select.startStr,
+            end: select.endStr,
+            allDay: select.allDay,
+            //random readable color
+            //backgroundColor: '#'+((1<<24)*Math.random()|0).toString(16)
+            
+            extendedProps: {
+              paciente: paciente
+            //   nota: prompt('Escolha uma nota para o evento')
+            }
+          })
+        }
+
   }
 
   handleWeekendsToggle = () => {
@@ -127,28 +156,9 @@ export default class DemoApp extends React.Component {
     }
      // clear date selection
     else{
-      this.setState({popupopen: true}, () => {
-        // while(this.state.popupopen){
-        //   console.log("waiting"); //! wait for popup to close
-        // }
-        let title= this.state.popupstate.paciente; //!mudar para titulo
-        if (title) {
-          calendarApi.addEvent({
-            id: createEventId(),
-            title,
-            start: selectInfo.startStr,
-            end: selectInfo.endStr,
-            allDay: selectInfo.allDay,
-            //random readable color
-            //backgroundColor: '#'+((1<<24)*Math.random()|0).toString(16)
-            
-            // extendedProps: {
-            //   nota: prompt('Escolha uma nota para o evento')
-            // }
-          })
-        }
-      }
-         );
+      this.setState({popupstate: { title: "", paciente: ""}});
+      this.setState({popupopen: true});
+      select=selectInfo
       //let title = prompt('Escolha um tÃ­tulo para o evento')
       
       //calendarApi.unselect()
@@ -163,11 +173,9 @@ export default class DemoApp extends React.Component {
   }
 
   handleEventClick = (clickInfo) => {
+    click = clickInfo
+    this.setState({daropen: true});
     
-    if (window.confirm(`Tem a certeza que quer apagar o evento: '${clickInfo.event.title}'`)) {
-
-      clickInfo.event.remove()
-    }
     
   }
 
@@ -189,11 +197,3 @@ function renderEventContent(eventInfo) {
   )
 }
 
-function renderSidebarEvent(event) {
-  return (
-    <li key={event.id}>
-      <b>{formatDate(event.start, {year: 'numeric', day: 'numeric', month: 'short'})}</b>
-      <i>{event.title}</i>
-    </li>
-  )
-}

@@ -42,7 +42,7 @@ export default function MarcarConsultaPopup(props) {
     //window.location.reload(false);
     
     setOpen(false);
-    if (props.submit!=null) props.submit("Joana",'1243434')
+    if (props.submit!=null) props.submit("Extracao",'Joana') //! REPARAR
     if (props.close!=null) props.close()
   }
 
