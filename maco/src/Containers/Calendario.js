@@ -13,6 +13,10 @@ import Navbar2 from '../components/Navbar2'
 import { NavLink } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import DemoApp from '../components/DemoApp';
+
+import AtualizarPacientePopup from '../components/AtualizarPacientePopup';
+
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -59,7 +63,7 @@ function Calendario () {
                     </Grid>
                 </Grid>
                 <Grid sx={{border:1,justifyContent:'center',alignItems:'center'}} container item xs={9}>
-                    <h1>CALENDRIO.PNG</h1>
+                    <DemoApp />
                 </Grid>
             </Grid>
 

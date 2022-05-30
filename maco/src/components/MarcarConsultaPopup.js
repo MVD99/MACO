@@ -13,13 +13,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 import {utentes} from '../data/utentes.js'
 
 
-export default function CalendarPopup() {
+export default function MarcarConsultaPopup(props) {
 
   const [open, setOpen] = React.useState(true);
   const [nomeUtente,setnomeUtente] = useState('')
   const [NumeroUtente,setNumeroUtente] = useState('')
   const [Titulo,setTitulo] = useState('')
-
 
 
   const handleClickOpen = () => {
@@ -28,54 +27,51 @@ export default function CalendarPopup() {
 
   const handleClose = () => {
     setOpen(false);
+    if (props.close!=null) props.close()
+  
   };
   const handleCloseSend = () => {
 
     console.log("AAAAAAAAAAAAAAAAA"+nomeUtente)
-    localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
-    localStorage.setItem('NumeroUtente',NumeroUtente)
-    localStorage.setItem('Titulo',Titulo)
+    // localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
+    // localStorage.setItem('NumeroUtente',NumeroUtente)
+    // localStorage.setItem('Titulo',Titulo)
+
+
 
     //window.location.reload(false);
-
+    
     setOpen(false);
-  };
+    if (props.submit!=null) props.submit("Joana",'1243434')
+    if (props.close!=null) props.close()
+  }
 
-  
+
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Atualizar Dados
-      </Button>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
+        Marcar Consulta
+      </Button> */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Atualizar</DialogTitle>
+        <DialogTitle>Marcar Consulta para o dia 30/2/2022</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Descrição:
-          </DialogContentText>
           <form noValidate autoComplete="off" >
-          <Autocomplete
-            sx={{width:'100%', alignItems:'center', justifyContent:'center'}}
-            freeSolo
-            id="Titulo Titulo"
-            disableClearable
-            options={utentes.map((option) => option.Name)}
-            renderInput={(params) => (
               <TextField
+                sx={{
+                  display:'flex',
+                  paddingTop:'0.5vw',
+                  paddingBottom:'0.25vw',
+                }}
+                multiline
+                rows={4}
                 onChange={(e) => setTitulo(e.target.value)}
 
-                {...params}
-                label="Pesquisar Nome"
-                InputProps={{
-                  ...params.InputProps,
-                  type: 'search',
-                }}
+                label="Descricao"
+
               />
-            )}
-          />
           <Autocomplete
-            sx={{width:'100%', alignItems:'center', justifyContent:'center'}}
+            sx={{width:'100%', alignItems:'center', justifyContent:'center',paddingTop:'0.25vw',paddingBottom:'0.25vw'}}
             freeSolo
             id="Search Name"
             disableClearable
@@ -85,7 +81,7 @@ export default function CalendarPopup() {
                 onChange={(e) => setnomeUtente(e.target.value)}
 
                 {...params}
-                label="Pesquisar Nome"
+                label="Nome Utente"
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
@@ -93,8 +89,9 @@ export default function CalendarPopup() {
               />
             )}
           />
-           <Autocomplete
-            sx={{width:'100%'}}
+          <h3>Ou</h3>
+          <Autocomplete
+            sx={{width:'100%',paddingTop:'0.25vw',paddingBottom:'0.25vw'}}
             freeSolo
             id="Search Name"
             disableClearable
@@ -115,10 +112,11 @@ export default function CalendarPopup() {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseSend}>Subscribe</Button>
+          <Button onClick={handleCloseSend}>Marcar</Button>
           <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
     </div>
   );
+
 }

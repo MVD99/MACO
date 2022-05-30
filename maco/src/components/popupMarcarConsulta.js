@@ -15,11 +15,9 @@ import {utentes} from '../data/utentes.js'
 
 export default function CalendarPopup() {
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [nomeUtente,setnomeUtente] = useState('')
   const [NumeroUtente,setNumeroUtente] = useState('')
-  const [Titulo,setTitulo] = useState('')
-
 
 
   const handleClickOpen = () => {
@@ -34,8 +32,6 @@ export default function CalendarPopup() {
     console.log("AAAAAAAAAAAAAAAAA"+nomeUtente)
     localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
     localStorage.setItem('NumeroUtente',NumeroUtente)
-    localStorage.setItem('Titulo',Titulo)
-
     //window.location.reload(false);
 
     setOpen(false);
@@ -46,36 +42,17 @@ export default function CalendarPopup() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Atualizar Dados
+        Marcar Consulta
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Atualizar</DialogTitle>
+        <DialogTitle>Marcar consulta para dia 30/2/2022</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Descrição:
+            Selecione o paciente:
           </DialogContentText>
           <form noValidate autoComplete="off" >
           <Autocomplete
-            sx={{width:'100%', alignItems:'center', justifyContent:'center'}}
-            freeSolo
-            id="Titulo Titulo"
-            disableClearable
-            options={utentes.map((option) => option.Name)}
-            renderInput={(params) => (
-              <TextField
-                onChange={(e) => setTitulo(e.target.value)}
-
-                {...params}
-                label="Pesquisar Nome"
-                InputProps={{
-                  ...params.InputProps,
-                  type: 'search',
-                }}
-              />
-            )}
-          />
-          <Autocomplete
-            sx={{width:'100%', alignItems:'center', justifyContent:'center'}}
+            sx={{width:'50%', alignItems:'center', justifyContent:'center'}}
             freeSolo
             id="Search Name"
             disableClearable
@@ -94,7 +71,7 @@ export default function CalendarPopup() {
             )}
           />
            <Autocomplete
-            sx={{width:'100%'}}
+            sx={{width:'50%'}}
             freeSolo
             id="Search Name"
             disableClearable

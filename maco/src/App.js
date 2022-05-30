@@ -20,7 +20,7 @@ import { red } from '@mui/material/colors';
 
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 
-import Demo from './Containers/Demo'
+import DemoApp from './components/DemoApp'
 
 const theme = createTheme({
   palette: {
@@ -52,7 +52,7 @@ function App() {
        <Route path='/PerfilPaciente' element={<PerfilPaciente/>} />
        <Route path='/Calendario' element={<Calendario/>} />
        <Route path='/FormPaciente' element={<FormPaciente/>} />
-        <Route path='/Demo' element={<Demo/>} />
+       <Route path='/Demo' element={<DemoApp/>} />
       </Routes>
     </Router>
     </ThemeProvider>

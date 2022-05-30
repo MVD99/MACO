@@ -3,22 +3,33 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 
-// import CalendarPopup from './components/CalendarPopup.js'
+import MarcarConsultaPopup from './MarcarConsultaPopup'
+import popup from './CalendarPopup.js'
 // import {utentes} from './data/utentes.js'
 import Autocomplete from '@mui/material/Autocomplete';
 
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 
-
+import CalendarPopup from '../components/CalendarPopup';
+var calendarApi = null
 export default class DemoApp extends React.Component {
 
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = {popupopen: false,
+                  popupstate: { title: "",
+                                paciente: "",
+                              }
+                  } ;
+  }
+
+    state = {
     weekendsVisible: true,
     currentEvents: []
   }
 
-
+  
 
   render() {
     return (
@@ -44,7 +55,7 @@ export default class DemoApp extends React.Component {
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            //!breaks everything eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
             eventAdd={function(){}}
             eventChange={function(){}}
@@ -52,7 +63,7 @@ export default class DemoApp extends React.Component {
             */
           />
       </div>
-      
+      { this.state.popupopen && <MarcarConsultaPopup close={this.handlePopupClose.bind(this)} submit={this.handlePopupSubmit.bind(this)} />} 
       </>
     )
   }
@@ -88,6 +99,18 @@ export default class DemoApp extends React.Component {
   //   )
   // }
 
+  handlePopupClose = () => {
+    this.setState({popupopen: false});
+  }
+  
+  handlePopupSubmit = (title, paciente) => {
+    const result = { title: title, paciente: paciente };
+    this.setState(
+      {popupstate: result}
+    );
+    console.log(result);
+  }
+
   handleWeekendsToggle = () => {
     this.setState({
       weekendsVisible: !this.state.weekendsVisible
@@ -96,7 +119,7 @@ export default class DemoApp extends React.Component {
   }
 
   handleDateSelect = (selectInfo) => {
-    let calendarApi = selectInfo.view.calendar
+    calendarApi = selectInfo.view.calendar
     if (calendarApi.view.type === 'dayGridMonth') {
       calendarApi.changeView('timeGridDay');
       calendarApi.gotoDate(selectInfo.start)
@@ -104,25 +127,38 @@ export default class DemoApp extends React.Component {
     }
      // clear date selection
     else{
-      
-      let title = prompt('Escolha um tÃ­tulo para o evento')
-      
-      calendarApi.unselect()
-      if (title) {
-        calendarApi.addEvent({
-          id: createEventId(),
-          title,
-          start: selectInfo.startStr,
-          end: selectInfo.endStr,
-          allDay: selectInfo.allDay,
-          //random readable color
-          //backgroundColor: '#'+((1<<24)*Math.random()|0).toString(16)
-          
-          extendedProps: {
-            nota: prompt('Escolha uma nota para o evento')
-          }
-        })
+      this.setState({popupopen: true}, () => {
+        // while(this.state.popupopen){
+        //   console.log("waiting"); //! wait for popup to close
+        // }
+        let title= this.state.popupstate.paciente; //!mudar para titulo
+        if (title) {
+          calendarApi.addEvent({
+            id: createEventId(),
+            title,
+            start: selectInfo.startStr,
+            end: selectInfo.endStr,
+            allDay: selectInfo.allDay,
+            //random readable color
+            //backgroundColor: '#'+((1<<24)*Math.random()|0).toString(16)
+            
+            // extendedProps: {
+            //   nota: prompt('Escolha uma nota para o evento')
+            // }
+          })
+        }
       }
+         );
+      //let title = prompt('Escolha um tÃ­tulo para o evento')
+      
+      //calendarApi.unselect()
+    
+     
+      
+      
+     
+
+      calendarApi.unselect()
     }
   }
 
@@ -135,11 +171,11 @@ export default class DemoApp extends React.Component {
     
   }
 
-  handleEvents = (events) => {
-    this.setState({
-      currentEvents: events
-    })
-  }
+  // handleEvents = (events) => { //! breaks everything
+  //   this.setState({
+  //     currentEvents: events
+  //   })
+  // }
 
 }
 

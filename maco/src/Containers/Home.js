@@ -12,9 +12,12 @@ import Button from '@mui/material/Button';
 import Navbar2 from '../components/Navbar2'
 import Stack from '@mui/material/Stack';
 
+
+
 import { NavLink } from 'react-router-dom';
 
 import { NavLink as Link } from 'react-router-dom';
+
 
 import DemoApp from '../components/DemoApp';
 const Item = styled(Paper)(({ theme }) => ({
@@ -62,6 +65,7 @@ function Home () {
 
     <React.Fragment>
     <Navbar2 />
+
     <Grid sx = {{marginTop:'10px'}} container spacing={2}>
         <Grid sx={{justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
           <Grid sx= {{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}}>
@@ -70,7 +74,7 @@ function Home () {
         </Grid>
         <Grid sx={{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={6}>
         
-
+          <DemoApp />
 
         </Grid>
         <Grid sx={{border:1,border:1, justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>

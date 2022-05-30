@@ -8,18 +8,18 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react'
 
+
 import Autocomplete from '@mui/material/Autocomplete';
 
 import {utentes} from '../data/utentes.js'
 
 
-export default function CalendarPopup() {
+export default function MarcarConsultaPopup(props) {
 
   const [open, setOpen] = React.useState(true);
   const [nomeUtente,setnomeUtente] = useState('')
   const [NumeroUtente,setNumeroUtente] = useState('')
-  const [Titulo,setTitulo] = useState('')
-
+  const [Notas,setNotas] = useState('')
 
 
   const handleClickOpen = () => {
@@ -28,45 +28,52 @@ export default function CalendarPopup() {
 
   const handleClose = () => {
     setOpen(false);
+    if (props.close!=null) props.close()
+  
   };
   const handleCloseSend = () => {
 
     console.log("AAAAAAAAAAAAAAAAA"+nomeUtente)
-    localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
-    localStorage.setItem('NumeroUtente',NumeroUtente)
-    localStorage.setItem('Titulo',Titulo)
+    // localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
+    // localStorage.setItem('NumeroUtente',NumeroUtente)
+    // localStorage.setItem('Notas',Notas)
+
+
 
     //window.location.reload(false);
-
+    
     setOpen(false);
-  };
+    if (props.submit!=null) props.submit(nomeUtente,NumeroUtente)
+    if (props.close!=null) props.close()
+  }
 
-  
+
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Atualizar Dados
-      </Button>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
+        Marcar Consulta
+      </Button> */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Atualizar</DialogTitle>
+        <DialogTitle>Marcar Consulta para o dia 30/2/2022</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Descrição:
-          </DialogContentText>
           <form noValidate autoComplete="off" >
           <Autocomplete
-            sx={{width:'100%', alignItems:'center', justifyContent:'center'}}
+            sx={{width:'100%', alignItems:'center', justifyContent:'center',paddingTop:'0.5vw',paddingBottom:'0.25vw'}}
+            disabled
+            defaultValue={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "}
             freeSolo
-            id="Titulo Titulo"
+            id="Titulo"
             disableClearable
             options={utentes.map((option) => option.Name)}
             renderInput={(params) => (
               <TextField
-                onChange={(e) => setTitulo(e.target.value)}
+                variant ="filled"
+                multiline
+                rows={4}
 
                 {...params}
-                label="Pesquisar Nome"
+                label="Descricao"
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
@@ -75,17 +82,20 @@ export default function CalendarPopup() {
             )}
           />
           <Autocomplete
-            sx={{width:'100%', alignItems:'center', justifyContent:'center'}}
+            sx={{width:'100%', alignItems:'center', justifyContent:'center',paddingTop:'0.25vw',paddingBottom:'0.25vw'}}
             freeSolo
+            disabled
+            defaultValue={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "}
             id="Search Name"
             disableClearable
             options={utentes.map((option) => option.Name)}
             renderInput={(params) => (
               <TextField
+                variant ="filled"
                 onChange={(e) => setnomeUtente(e.target.value)}
 
                 {...params}
-                label="Pesquisar Nome"
+                label="Nome Utente"
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
@@ -93,8 +103,10 @@ export default function CalendarPopup() {
               />
             )}
           />
-           <Autocomplete
-            sx={{width:'100%'}}
+          <Autocomplete
+            sx={{width:'100%',paddingTop:'0.25vw',paddingBottom:'0.25vw'}}
+            disabled
+            defaultValue={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "}
             freeSolo
             id="Search Name"
             disableClearable
@@ -102,6 +114,8 @@ export default function CalendarPopup() {
             renderInput={(params) => (
               <TextField
                 {...params}
+                disabled
+                variant="filled"
                 onChange={(e) => setNumeroUtente(e.target.value)}
 
                 label="Numero de Utente"
@@ -112,13 +126,28 @@ export default function CalendarPopup() {
               />
             )}
           />
+
+          <TextField
+            sx ={{
+              paddingTop:'0.25vw',
+              display:'flex',
+            }}
+
+            onChange={(e) => setNotas(e.target.value)}
+            multiline
+            rows={4}
+            label="Notas da consulta"
+
+          />
+
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseSend}>Subscribe</Button>
+          <Button onClick={handleCloseSend}>Marcar</Button>
           <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
     </div>
   );
+
 }
