@@ -19,7 +19,7 @@ const NavbarLogin = () => {
         <NavMenu>
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/Register'>Register +</NavBtnLink>
+          <NavBtnLink to='/Register'>Registar</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

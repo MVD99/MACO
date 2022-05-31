@@ -64,13 +64,21 @@ function PesquisaUtente() {
           />
 
         </Grid>
-        <Grid sx={{paddingTop:'5vw',Width:"flex",justifyContent:'center',allignItems:'center',display: 'flex'}} item xs={12}>
-        <NavLink to = '/PerfilPaciente'>
-          <Button variant='contained'>
-              GO
-          </Button>
-
-          </ NavLink>
+        <Grid sx={{paddingTop:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}} container spacing={4} item xs={12}>
+          <Grid item xs={6} sx ={{justifyContent:'right',alignItems:'center',display:'flex'}}>
+            <NavLink to = '/PerfilPaciente'>
+              <Button variant='contained'>
+                  Pesquisar
+              </Button>
+            </ NavLink>
+          </Grid>
+          <Grid item xs={6} sx ={{justifyContent:'left',alignItems:'center',display:'flex'}} >
+            <NavLink to = '/FormPaciente'>
+                  <Button  variant='contained'>
+                      Adicionar Paciente
+                  </Button>
+                </NavLink>
+          </Grid>
         </Grid>
     </React.Fragment>
   );

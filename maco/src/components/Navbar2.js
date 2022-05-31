@@ -22,20 +22,17 @@ const Navbar2 = () => {
             Home
           </NavLink>
           <NavLink to='/calendario' activeStyle>
-            Calendário
+            Agenda
           </NavLink>
           <NavLink to='/PesquisaUtente' activeStyle>
-            Pacientes
-          </NavLink>
-          <NavLink to='/about' activeStyle>
-            About
+            Utentes
           </NavLink>
           
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/Login'>Sign Out</NavBtnLink>
+          <NavBtnLink to='/Login'>Terminar Sessão</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

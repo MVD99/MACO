@@ -39,22 +39,15 @@ export default function MarcarConsultaPopup(props) {
   
   };
 
-
-
   const handleCloseSend = () => {
-
-    console.log("AAAAAAAAAAAAAAAAA"+nomeUtente)
+    console.log(Notas)
     // localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
     // localStorage.setItem('NumeroUtente',NumeroUtente)
     // localStorage.setItem('Notas',Notas)
-
-
-
     //window.location.reload(false);
     
     setOpen(false);
     if (props.submit!=null) props.submit(Notas)
-    console.log("NOTAS")
     if (props.close!=null) props.close()
   }
 
@@ -117,7 +110,7 @@ export default function MarcarConsultaPopup(props) {
           <Autocomplete
             sx={{width:'100%',paddingTop:'0.25vw',paddingBottom:'0.25vw'}}
             disabled
-            defaultValue={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "}
+            defaultValue={"999080114"}
             freeSolo
             id="Search Name"
             disableClearable

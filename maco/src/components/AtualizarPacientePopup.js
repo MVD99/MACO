@@ -42,9 +42,9 @@ export default function AtualizarPacientePopup() {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Atualizar</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          {/* <DialogContentText>
             Descrição:
-          </DialogContentText>
+          </DialogContentText> */}
           <form noValidate autoComplete="off" >
           <TextField
             autoFocus
@@ -69,8 +69,8 @@ export default function AtualizarPacientePopup() {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseSend}>Subscribe</Button>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleCloseSend}>Alterar</Button>
+          <Button onClick={handleClose}>Cancelar</Button>
         </DialogActions>
       </Dialog>
     </div>

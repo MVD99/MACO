@@ -8,17 +8,27 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react'
 
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+
 import Autocomplete from '@mui/material/Autocomplete';
 
 import {utentes} from '../data/utentes.js'
 
 
+// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+// import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import Stack from '@mui/material/Stack';
+
 export default function MarcarConsultaPopup(props) {
 
   const [open, setOpen] = React.useState(true);
-  const [nomeUtente,setnomeUtente] = useState('')
-  const [NumeroUtente,setNumeroUtente] = useState('')
   const [Titulo,setTitulo] = useState('')
+
 
 
   const handleClickOpen = () => {
@@ -31,8 +41,11 @@ export default function MarcarConsultaPopup(props) {
   
   };
   const handleCloseSend = () => {
+    
+    console.log(Titulo)
+    console.log(nomeUtente)
+    console.log(numeroUtente)
 
-    console.log("AAAAAAAAAAAAAAAAA"+nomeUtente)
     // localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
     // localStorage.setItem('NumeroUtente',NumeroUtente)
     // localStorage.setItem('Titulo',Titulo)
@@ -42,10 +55,13 @@ export default function MarcarConsultaPopup(props) {
     //window.location.reload(false);
     
     setOpen(false);
-    if (props.submit!=null) props.submit("Extracao",'Joana') //! REPARAR
+    if (props.submit!=null) props.submit(Titulo,nomeUtente) //! REPARAR
     if (props.close!=null) props.close()
   }
 
+
+  const [nomeUtente, setnomeUtente] = React.useState('');
+  const [numeroUtente, setnumeroUtente] = React.useState('');
 
 
   return (
@@ -54,7 +70,7 @@ export default function MarcarConsultaPopup(props) {
         Marcar Consulta
       </Button> */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Marcar Consulta para o dia 30/2/2022</DialogTitle>
+        <DialogTitle>Marcar Consulta</DialogTitle>
         <DialogContent>
           <form noValidate autoComplete="off" >
               <TextField
@@ -76,12 +92,15 @@ export default function MarcarConsultaPopup(props) {
             id="Search Name"
             disableClearable
             options={utentes.map((option) => option.Name)}
+            onInputChange={(event, newInputValue) => {
+              setnomeUtente(newInputValue);
+            }}
             renderInput={(params) => (
               <TextField
                 onChange={(e) => setnomeUtente(e.target.value)}
 
                 {...params}
-                label="Nome Utente"
+                label="Nome do utente"
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
@@ -95,13 +114,16 @@ export default function MarcarConsultaPopup(props) {
             freeSolo
             id="Search Name"
             disableClearable
+            onInputChange={(event, newInputValue) => {
+              setnumeroUtente(newInputValue);
+            }}
             options={utentes.map((option) => option.ID)}
             renderInput={(params) => (
               <TextField
                 {...params}
-                onChange={(e) => setNumeroUtente(e.target.value)}
+                //onChange={(e) => setNumeroUtente(e.target.value)}
 
-                label="Numero de Utente"
+                label="Número de utente"
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
@@ -110,10 +132,23 @@ export default function MarcarConsultaPopup(props) {
             )}
           />
           </form>
+        <FormGroup>
+          <FormControlLabel control={<Checkbox defaultChecked />} label="Deixar lembrete?" />
+        </FormGroup>
+          <TextField
+          id="date"
+          label="Data Lembrete"
+          type="date"
+          inputFormat="dd-MM-yyyy"
+          sx={{display:'flex'}}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseSend}>Marcar</Button>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleCloseSend}>Agendar</Button>
+          <Button onClick={handleClose}>Cancelar</Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -14,13 +14,11 @@ import { NavLink } from 'react-router-dom';
 
 import NavbarLogin from '../components/NavbarLogin'
 
-import Marcarpopup from '../components/DarConsultapopup'
 
 function Login  ()  {
   return (
     <>
 
-      <Marcarpopup/>
       <NavbarLogin />
       <Container sx={{width:'30vw'}} >
         <Grid container spacing={1}>
@@ -28,16 +26,16 @@ function Login  ()  {
             <Avatar  alt="ERROR" src={ require("../image/MACO_Logo.png")}  sx={{height: "100%",width:'15vw'}} />
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField variant='outlined' label ='Username' sx ={{width:'99%'}}>
+            <TextField variant='outlined' label ='Nome de Utilizador' sx ={{width:'99%'}}>
             </TextField>
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField id="pw"type='password'variant='outlined' label ='Password' sx ={{width:'99%'}}>
+            <TextField id="pw"type='password'variant='outlined' label ='Palavra-passe' sx ={{width:'99%'}}>
             </TextField>
           </Grid>
           <Grid item xs={12} sx={{justifyContent:'center',alignItems:'center',display: 'flex'}}>
              <FormGroup sx={{alignItems:'left'}}>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Keep Signed in" />
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Manter Sessão Iniciada" />
              </FormGroup>
           </Grid>
           <Grid item xs={12} sx={{justifyContent:'center',alignItems:'center',display: 'flex'}}>

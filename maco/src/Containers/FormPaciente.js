@@ -31,7 +31,7 @@ function FormPaciente  ()  {
           </Grid>
 
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField variant='outlined' label ='Idade' sx ={{width:'99%'}}>
+            <TextField variant='outlined' label ='Data de Nascimento' sx ={{width:'99%'}}>
             </TextField>
           </Grid>
           
@@ -55,7 +55,7 @@ function FormPaciente  ()  {
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
             <NavLink to='/Home'>
               <Button variant='contained'>
-                      Register
+                      Adicionar
               </Button>
             </NavLink>
           </Grid>

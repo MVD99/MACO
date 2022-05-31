@@ -10,11 +10,22 @@ import Autocomplete from '@mui/material/Autocomplete';
 import DarConsultaPopup from './DarConsultapopup'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
-
+import ptlocale from '@fullcalendar/core/locales/pt'
 import CalendarPopup from '../components/CalendarPopup';
 var calendarApi = null
 var select = null
 var click = null
+
+Array.prototype.indexOfForArrays = function(search)
+{
+  var searchJson = JSON.stringify(search);
+  var arrJson = this.map(JSON.stringify); 
+
+  return arrJson.indexOf(searchJson);
+};
+
+
+
 export default class DemoApp extends React.Component {
 
   constructor(props) {
@@ -34,14 +45,15 @@ export default class DemoApp extends React.Component {
 
   }
 
-  
+
+
 
   render() {
     return (
       <>
       <div className="demo-app">
           <FullCalendar
-            locale={'pt'}
+            locale= {ptlocale}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
               left: 'prev,next today',
@@ -52,7 +64,7 @@ export default class DemoApp extends React.Component {
             editable={true}
             selectable={true}
             ref= {this.calendarRef}
-      
+            
             selectMirror={true}
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
@@ -60,9 +72,12 @@ export default class DemoApp extends React.Component {
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
-            //!breaks everything eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            eventAdd={this.handleADD}
+            eventChange={this.handleChange}
+            eventRemove={this.handledelete}
+           // eventsSet={this.handleEvents } // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
-            eventAdd={function(){}}
+           
             eventChange={function(){}}
             eventRemove={function(){}}
             */
@@ -74,36 +89,49 @@ export default class DemoApp extends React.Component {
     )
   }
 
-  // renderSidebar() {
-  //   return (
-  //     <div className='demo-app-sidebar'>
-  //       <div className='demo-app-sidebar-section'>
-  //         <h2>Instructions</h2>
-  //         <ul>
-  //           <li>Select dates and you will be prompted to create a new event</li>
-  //           <li>Drag, drop, and resize events</li>
-  //           <li>Click an event to delete it</li>
-  //         </ul>
-  //       </div>
-  //       <div className='demo-app-sidebar-section'>
-  //         <label>
-  //           <input
-  //             type='checkbox'
-  //             checked={this.state.weekendsVisible}
-  //             onChange={this.handleWeekendsToggle}
-  //           ></input>
-  //           toggle weekends
-  //         </label>
-  //       </div>
-  //       <div className='demo-app-sidebar-section'>
-  //         <h2>All Events ({this.state.currentEvents.length})</h2>
-  //         <ul>
-  //           {this.state.currentEvents.map(renderSidebarEvent)}
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   )
+  
+  // handleEvents = (events) => {
+  //   this.state.currentEvent = events 
   // }
+  
+  
+  handleChange = (info) => {
+    let events= JSON.parse(localStorage.getItem('events'))
+    if (events.indexOfForArrays([info.oldEvent._def.title, info.oldEvent._def.extendedProps.paciente, info.oldEvent.startStr, info.oldEvent.endStr]) === 0) {
+      events.pop()
+    }
+    else{
+      events.splice(events.indexOfForArrays([info.oldEvent._def.title, info.oldEvent._def.extendedProps.paciente, info.oldEvent.startStr, info.oldEvent.endStr]),events.indexOfForArrays([info.oldEvent._def.title, info.oldEvent._def.extendedProps.paciente, info.oldEvent.startStr, info.oldEvent.endStr]))
+    }
+    localStorage.removeItem('events')
+    localStorage.setItem('events', JSON.stringify(events))
+    events.push([info.event._def.title, info.event._def.extendedProps.paciente, info.event.startStr, info.event.endStr])
+    localStorage.setItem('events', JSON.stringify(events))
+  }
+
+  handledelete = (info) => {
+    let events= JSON.parse(localStorage.getItem('events'))
+    if (events.indexOfForArrays([info.event._def.title, info.event._def.extendedProps.paciente, info.event.startStr, info.event.endStr]) === 0) {
+      events.pop()
+    }
+    else{
+      events.splice(events.indexOfForArrays([info.event._def.title, info.event._def.extendedProps.paciente, info.event.startStr, info.event.endStr]),events.indexOfForArrays([info.event._def.title, info.event._def.extendedProps.paciente, info.event.startStr, info.event.endStr]))
+    }
+      localStorage.removeItem('events')
+    localStorage.setItem('events', JSON.stringify(events))
+  }
+
+
+  handleADD = (info) => {
+    console.log(info)
+    let events= JSON.parse(localStorage.getItem('events'))
+    if(events == null){
+      events = []
+    }
+    events.push([info.event._def.title, info.event._def.extendedProps.paciente, info.event.startStr, info.event.endStr])
+    localStorage.setItem('events', JSON.stringify(events))
+  }
+
   handleapagar = () => {
     click.event.remove()
   }
@@ -179,21 +207,28 @@ export default class DemoApp extends React.Component {
     
   }
 
-  // handleEvents = (events) => { //! breaks everything
-  //   this.setState({
-  //     currentEvents: events
-  //   })
-  // }
 
 }
 
 function renderEventContent(eventInfo) {
-  return (
-    <>
-      <b>{eventInfo.timeText}</b>
-      <i>{eventInfo.event.title}</i>
+  calendarApi = eventInfo.view.calendar;
+    if (calendarApi.view.type === 'dayGridMonth') {
+      return(<>
+        <b>{eventInfo.timeText}</b>
+        <i>{" " + eventInfo.event.title}</i>
+        
+      </>)
+    }
+    else{
+      console.log(eventInfo.event.extendedProps.paciente)
+      return (
       
-    </>
-  )
+        <>
+          <b>{eventInfo.timeText}</b>
+          <i>{" " + eventInfo.event.title + ",  "}</i>
+          {eventInfo.event.extendedProps.paciente !== ""  && <i>{"Paciente: " + eventInfo.event.extendedProps.paciente}</i>}
+    
+        </>
+      )
+    }
 }
-

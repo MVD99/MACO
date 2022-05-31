@@ -66,21 +66,21 @@ export default class PerfilPaciente extends Component {
         <div>
             <Navbar2 />
             <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-                <Grid sx={{border:1}} item xs={3}>
-                    <Grid sx= {{border:1,height:'17vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
+                <Grid sx={{border:0}} item xs={3}>
+                    <Grid sx= {{border:0,height:'17vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
                         <Avatar  alt="ERROR" src={ require("../image/avatar.jpg")}  sx={{ width: "16.5vw", height: "16.5vw"}} />
                     </Grid>
                     <Grid>
-                        <h1 style = {{justifyContent:'center',alignItems:'center',display: 'flex'}}>Andre</h1>
+                        <h1 style = {{justifyContent:'center',alignItems:'center',display: 'flex'}}>Sofia Wilson</h1>
                     </Grid>
-                    <Grid sx= {{border:1}}>
-                        <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:1,paddingLeft:'1vw',alignItems:'center',display: 'flex'}}>
+                    <Grid sx= {{border:0}}>
+                        <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:0,paddingLeft:'1vw',alignItems:'center',display: 'flex'}}>
                             <Grid sx={{display:'flex'}}direction='column' spacing={5}>          
                                 <h3>
-                                    Data de nascimento: 1/2/1960
+                                    Data de nascimento: 05/03/1972
                                 </h3>
                                 <h3>
-                                    Género Masculino
+                                    Género Feminino
                                 </h3>
                                 <h2>
                                     Descrição:
@@ -93,7 +93,7 @@ export default class PerfilPaciente extends Component {
                                 </h3>
                             </Grid>
                         </Grid>
-                        <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:1, justifyContent:'center',alignItems:'center',display: 'flex'}}>
+                        <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:0, justifyContent:'center',alignItems:'center',display: 'flex'}}>
                             <FormDialog>
                                 Atualizar Perfil
                             </FormDialog>
@@ -104,8 +104,11 @@ export default class PerfilPaciente extends Component {
 
                     <Grid sx ={{border:0,justifyContent:'center',alignItems:'center',display: 'flex',paddingLeft:'1vw',paddingRight:'1vw'}} item xs={6}>
                         <Stack direction='column' spacing={5}>        
-                            <Accordion>
+                            <Accordion defaultExpanded={true}>
+                               
+                                
                                 <AccordionSummary
+                               
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
@@ -114,27 +117,12 @@ export default class PerfilPaciente extends Component {
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                    Consulta ainda não realizada
                                 </Typography>
                                 </AccordionDetails>
+                                
                             </Accordion>
-                            <Accordion>
-                                <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                                >
-                                <Typography>Consulta dia {consultas[ ((this.state.page*8)-8) ].date}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                <Typography>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                    malesuada lacus ex, sit amet blandit leo lobortis eget.
-                                </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                            <Accordion>
+                            <Accordion defaultExpanded={true}>
                                 <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -156,6 +144,21 @@ export default class PerfilPaciente extends Component {
                                 id="panel1a-header"
                                 >
                                 <Typography>Consulta dia {consultas[ ((this.state.page*8)-6) ].date}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                <Typography>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion>
+                                <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                                >
+                                <Typography>Consulta dia {consultas[ ((this.state.page*8)-5) ].date}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>

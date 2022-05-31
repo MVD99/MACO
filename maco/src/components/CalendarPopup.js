@@ -15,7 +15,7 @@ import {utentes} from '../data/utentes.js'
 
 export default function CalendarPopup() {
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [nomeUtente,setnomeUtente] = useState('')
   const [NumeroUtente,setNumeroUtente] = useState('')
   const [Titulo,setTitulo] = useState('')

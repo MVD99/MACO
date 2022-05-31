@@ -1,6 +1,6 @@
 export const pacienteConsultas = [
     {
-       "date":"28-03-2022"
+       "date":"6-05-2022"
     },
     {
        "date":"09-11-2021"

@@ -20,7 +20,7 @@ import { NavLink } from 'react-router-dom';
 
 import { NavLink as Link } from 'react-router-dom';
 
-
+import Notification from '../components/Notification';
 import DemoApp from '../components/DemoApp';
 
 
@@ -62,9 +62,13 @@ export default class Home extends Component {
     this.state = {
         page:1,
         TODO:"",
+        notificationopen:false
     }
 
   }  
+
+
+
   setTODO = ({target})=>{
     this.setState({[target.TODO]:target.value});
     localStorage.setItem('TODO',target.value);
@@ -83,34 +87,37 @@ export default class Home extends Component {
     <Navbar2 />
 
     <Grid sx = {{marginTop:'5px'}} container spacing={2}>
-        <Grid sx={{justifyContent:'center',display: 'flex'}} item xs={3}> 
-            <Avatar alt="ERROR" src={ require("../image/avatar.jpg")}  sx={{ width: "16.5vw", height: "16.5vw"}} />
-        </Grid>
 
-        <Grid sx={{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={6}>
-          <DemoApp />
+
+        <Grid sx={{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={9}>
+          <DemoApp  />
         </Grid>
 
          <Grid sx={{border:1,paddingRight:'1vw'}} item xs={3}>
 
             <Grid>
               <Stack sx = {{justifyContent:'center',alignItems:'center',display: 'flex'}}direction='column' spacing={5}>
-                            
-                <h2>
-                    Proxima Consulta em: 5 minutos
-                </h2>
-
+                <Grid container spacing={1}>
+                  <Grid item xs={2} sx={{alignItems:'right',justifyContent:'right'}}>
+                    <div onClick={this.openNotification}>
+                      <Avatar  alt="ERROR" src={ require("../image/bell.png")} />
+                      {this.state.notificationopen && <Notification/>}
+                    </div>
+                  </Grid>
+                  <Grid item xs={10}>
+                    <h3>
+                    Próxima Consulta: 02/06 às 15:00
+                    </h3>
+                  </Grid>
+                
+                </Grid>
                 <NavLink to = '/Home'>
-                  <Button  variant='contained'>
-                      Adicionar Consulta
-                  </Button>
                 </NavLink>
                 <NavLink to = '/FormPaciente'>
                   <Button  variant='contained'>
                       Adicionar Paciente
                   </Button>
                 </NavLink>
-
                 </Stack>
             </Grid>
             <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw', justifyContent:'center',alignItems:'center',display: 'flex',paddingTop:'2vw'}}>  
@@ -126,7 +133,7 @@ export default class Home extends Component {
               onChange={this.setTODO}
               multiline
               rows={8}
-              label="TODO list"
+              label="Lista de Tarefas "
 
             />
             </Grid>
@@ -135,6 +142,10 @@ export default class Home extends Component {
     </React.Fragment>
     );
   }
+
+openNotification = () =>{
+  this.setState({notificationopen : !this.state.notificationopen}) 
+}
 
 }
 
