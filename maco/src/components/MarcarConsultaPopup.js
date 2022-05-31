@@ -12,13 +12,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 import {utentes} from '../data/utentes.js'
 
-
 export default function MarcarConsultaPopup(props) {
 
   const [open, setOpen] = React.useState(true);
-  const [nomeUtente,setnomeUtente] = useState('')
-  const [NumeroUtente,setNumeroUtente] = useState('')
   const [Titulo,setTitulo] = useState('')
+
 
 
   const handleClickOpen = () => {
@@ -31,8 +29,11 @@ export default function MarcarConsultaPopup(props) {
   
   };
   const handleCloseSend = () => {
+    
+    console.log(Titulo)
+    console.log(nomeUtente)
+    console.log(numeroUtente)
 
-    console.log("AAAAAAAAAAAAAAAAA"+nomeUtente)
     // localStorage.setItem('nomeUtente',JSON.stringify(nomeUtente))
     // localStorage.setItem('NumeroUtente',NumeroUtente)
     // localStorage.setItem('Titulo',Titulo)
@@ -45,6 +46,10 @@ export default function MarcarConsultaPopup(props) {
     if (props.submit!=null) props.submit("Extracao",'Joana') //! REPARAR
     if (props.close!=null) props.close()
   }
+
+
+  const [nomeUtente, setnomeUtente] = React.useState('');
+  const [numeroUtente, setnumeroUtente] = React.useState('');
 
 
 
@@ -76,6 +81,9 @@ export default function MarcarConsultaPopup(props) {
             id="Search Name"
             disableClearable
             options={utentes.map((option) => option.Name)}
+            onInputChange={(event, newInputValue) => {
+              setnomeUtente(newInputValue);
+            }}
             renderInput={(params) => (
               <TextField
                 onChange={(e) => setnomeUtente(e.target.value)}
@@ -95,11 +103,14 @@ export default function MarcarConsultaPopup(props) {
             freeSolo
             id="Search Name"
             disableClearable
+            onInputChange={(event, newInputValue) => {
+              setnumeroUtente(newInputValue);
+            }}
             options={utentes.map((option) => option.ID)}
             renderInput={(params) => (
               <TextField
                 {...params}
-                onChange={(e) => setNumeroUtente(e.target.value)}
+                //onChange={(e) => setNumeroUtente(e.target.value)}
 
                 label="Numero de Utente"
                 InputProps={{

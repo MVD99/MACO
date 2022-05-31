@@ -36,6 +36,9 @@ export default function CalendarPopup() {
 
     setOpen(false);
   };
+  const setnomeUtente2 = () => {
+    console.log("yes")
+  }
 
   
 
@@ -60,7 +63,7 @@ export default function CalendarPopup() {
             renderInput={(params) => (
               <TextField
                 onChange={(e) => setnomeUtente(e.target.value)}
-
+                onInputChange={setnomeUtente2} 
                 {...params}
                 label="Pesquisar Nome"
                 InputProps={{
