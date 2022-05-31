@@ -27,7 +27,7 @@ export default function AtualizarPacientePopup() {
     console.log(Descricao)
     localStorage.setItem('DescricaoPaciente',Descricao)
     localStorage.setItem('Notas',Notas)
-    //window.location.reload(false);
+    window.location.reload(false);
 
     setOpen(false);
   };
