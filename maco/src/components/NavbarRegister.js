@@ -19,7 +19,7 @@ const NavbarRegister= () => {
         <NavMenu>
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/Login'>Login +</NavBtnLink>
+          <NavBtnLink to='/Login'>Inicar Sessão</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

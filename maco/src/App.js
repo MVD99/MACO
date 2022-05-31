@@ -14,10 +14,13 @@ import PesquisaUtente from './Containers/PesquisaUtente';
 import Register from './Containers/Register';
 import PerfilPaciente from './Containers/PerfilPaciente';
 import Calendario from './Containers/Calendario';
+import FormPaciente from './Containers/FormPaciente';
 import { red } from '@mui/material/colors';
 
 
 import { ThemeProvider, createTheme} from '@mui/material/styles';
+
+import DemoApp from './components/DemoApp'
 
 const theme = createTheme({
   palette: {
@@ -48,8 +51,8 @@ function App() {
        <Route path='/Register' element={<Register/>} />
        <Route path='/PerfilPaciente' element={<PerfilPaciente/>} />
        <Route path='/Calendario' element={<Calendario/>} />
-
-
+       <Route path='/FormPaciente' element={<FormPaciente/>} />
+       <Route path='/Demo' element={<DemoApp/>} />
       </Routes>
     </Router>
     </ThemeProvider>

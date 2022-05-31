@@ -13,6 +13,10 @@ import Navbar2 from '../components/Navbar2'
 import { NavLink } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import DemoApp from '../components/DemoApp';
+
+import AtualizarPacientePopup from '../components/AtualizarPacientePopup';
+
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -32,34 +36,9 @@ function Calendario () {
         <React.Fragment>
             <Navbar2 />
             <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-                <Grid sx={{border:1,}} item xs={3}>
-                    <Grid sx= {{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}}>
-                       <h1>Calendário</h1>
-                    </Grid>
-                    <Grid>
-                    <FormControl sx ={{justifyContent:'center',alignItems:'center',display: 'flex',paddingTop:'2vw'}}>
-                    <FormLabel id="demo-radio-buttons-group-label">Tipo de Calendário</FormLabel>
-                        <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="female"
-                            name="radio-buttons-group"
-                        >
-                            <FormControlLabel value="Dia" control={<Radio />} label="Dia" />
-                            <FormControlLabel value="Semana" control={<Radio />} label="Semana" />
-                            <FormControlLabel value="Mês" control={<Radio />} label="Mês" />
-                        </RadioGroup>
-                    </FormControl>
-                    </Grid>
-                    <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw',border:1, justifyContent:'center',alignItems:'center',display: 'flex',paddingTop:'2vw'}}>  
-                        <NavLink to = '/Home'>
-                            <Button variant='contained'>
-                                Adicionar Consulta
-                            </Button>
-                        </NavLink>
-                    </Grid>
-                </Grid>
-                <Grid sx={{border:1,justifyContent:'center',alignItems:'center'}} container item xs={9}>
-                    <h1>CALENDRIO.PNG</h1>
+                
+                <Grid sx={{border:1,justifyContent:'center',alignItems:'center'}} container item xs={12}>
+                    <DemoApp />
                 </Grid>
             </Grid>
 

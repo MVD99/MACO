@@ -9,11 +9,20 @@ import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import { margin } from '@mui/system';
 import Button from '@mui/material/Button';
-import Navbar from '../components/navbar'
+import Navbar2 from '../components/Navbar2'
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import { useState } from 'react'
+import { Component } from 'react';
+
 
 import { NavLink } from 'react-router-dom';
 
 import { NavLink as Link } from 'react-router-dom';
+
+import Notification from '../components/Notification';
+import DemoApp from '../components/DemoApp';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -44,109 +53,99 @@ const LayoutContainerBaixo = styled('div')(() => ({
 
 }));
 
-function Home () {
-  return (
-    // <div
-    //   style={{
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //make circle item
-    //     height: '90vh'
-    //   }}
-    // >
-    //   <h1>Home</h1>
-    // </div>
+export default class Home extends Component {
 
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        page:1,
+        TODO:"",
+        notificationopen:false
+    }
+
+  }  
+
+
+
+  setTODO = ({target})=>{
+    this.setState({[target.TODO]:target.value});
+    localStorage.setItem('TODO',target.value);
+    
+  }
+  getTODO=()=>{
+    this.TODO = localStorage.getItem('TODO')
+    return localStorage.getItem('TODO')
+  }
+
+
+  render(){
+  return (
 
     <React.Fragment>
-    <Navbar />
+    <Navbar2 />
 
-        <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-          <Grid sx={{border:1}} item xs={3}>
-            <div style = {{justifyContent:'center',alignItems:'center',display: 'flex'}}>
-              <Avatar  alt="ERROR" src={ require("../image/avatar.jpg")}  sx={{ width: "16.5vw", height: "16.5vw"}} />
-              
-          </div>
-          <h1 style = {{paddingTop:"0.3vw",justifyContent:'center',alignItems:'center',display: 'flex'}}>Andre</h1>
+    <Grid sx = {{marginTop:'5px'}} container spacing={2}>
 
 
-          </Grid>
-
-          <Grid sx={{paddingRight:'0.5vw'}}container  item xs={9}>
-          <LayoutContainerCima >
-
-              <Avatar  alt="ERROR" src={ require("../image/MACO_Logo.png")}  sx={{height: "100%",width:'15vw'}} />
-            
-            </LayoutContainerCima>
-          <LayoutContainerBaixo >
-            <Grid container spacing={1}>
-              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/Calendario'>
-                    <Button variant='contained'>
-                      Ver Calendário
-                    </Button>
-                </NavLink>
-              </Grid>
-              <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                <NavLink to='/Calendario'>
-                    <Button variant='contained'>
-                      Marcar Consulta
-                    </Button>
-                </NavLink>
-                </Grid>
-                <Grid sx={{Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={4}>
-                  <NavLink to='/PesquisaUtente'>
-
-                  <Button variant='contained'>
-                    Pesquisar paciente
-                  </Button>
-
-                  </NavLink>
-                </Grid>
-
-            </Grid>
-          </LayoutContainerBaixo>
-          </Grid>
+        <Grid sx={{border:1,justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={9}>
+          <DemoApp  />
         </Grid>
-      <Grid sx = {{marginTop:'10px'}} container spacing={2}>
-        <Grid sx={{border:1,height:'auto',Width:"flex",justifyContent:'center',alignItems:'center',display: 'flex'}} item xs={3}>
-          <div>
-            <Button variant='contained'>
-                    Adicionar Paciente
-            </Button>
-          </div>
-        </Grid>
-        <Grid  item xs={9}>
-          <Grid  sx ={{}}container spacing={2}>
-            <Grid sx={{border:1}} item xs={8}>
-              <h1>Proxima consulta em: 05 minutos</h1>
 
-            </Grid>
-            <Grid  sx={{bgcolor:"#0f0",justifyContent:'center',allignItems:'center',display:"flex"}} item xs={4}>
-              <Button sx = {{margin:"auto"}}variant="contained" disableElevation>
-                Agendar Consulta
-              </Button>
-            </Grid>
+         <Grid sx={{border:1,paddingRight:'1vw'}} item xs={3}>
 
-            </Grid>
-            <Grid sx={{border:1}} item xs={4}>
-              <NavLink to='/PerfilPaciente'>
-
-                <Button variant='contained'>
-                        Ver detalhes do próximo paciente
-                </Button>
-              </NavLink>
-            </Grid>
+            <Grid>
+              <Stack sx = {{justifyContent:'center',alignItems:'center',display: 'flex'}}direction='column' spacing={5}>
+                <Grid container spacing={1}>
+                  <Grid item xs={2} sx={{alignItems:'right',justifyContent:'right'}}>
+                    <div onClick={this.openNotification}>
+                      <Avatar  alt="ERROR" src={ require("../image/bell.png")} />
+                      {this.state.notificationopen && <Notification/>}
+                    </div>
+                  </Grid>
+                  <Grid item xs={10}>
+                    <h3>
+                    Próxima Consulta: 02/06 às 15:00
+                    </h3>
+                  </Grid>
                 
-          </Grid>
-        </Grid>
-       </Grid>
+                </Grid>
+                <NavLink to = '/Home'>
+                </NavLink>
+                <NavLink to = '/FormPaciente'>
+                  <Button  variant='contained'>
+                      Adicionar Paciente
+                  </Button>
+                </NavLink>
+                </Stack>
+            </Grid>
+            <Grid sx={{paddingTop:'1vw',paddingBottom:'1vw', justifyContent:'center',alignItems:'center',display: 'flex',paddingTop:'2vw'}}>  
+              <TextField
+              sx ={{
+                paddingTop:'0.25vw',
+                display:'flex',
+                width:'100%'
+              
+              }}
+              name="TODO"
+              defaultValue={this.getTODO()}
+              onChange={this.setTODO}
+              multiline
+              rows={8}
+              label="Lista de Tarefas "
 
+            />
+            </Grid>
+        </Grid>
+    </Grid>
     </React.Fragment>
     );
   }
 
+openNotification = () =>{
+  this.setState({notificationopen : !this.state.notificationopen}) 
+}
 
+}
 
-export default Home;

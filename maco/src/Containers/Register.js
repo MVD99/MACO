@@ -23,21 +23,21 @@ function Register  ()  {
             <Avatar  alt="ERROR" src={ require("../image/MACO_Logo.png")}  sx={{height: "100%",width:'15vw'}} />
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField variant='outlined' label ='Username' sx ={{width:'99%'}}>
+            <TextField variant='outlined' label ='Nome de Utilizador' sx ={{width:'99%'}}>
             </TextField>
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField type ="password"variant='outlined' label ='Password' sx ={{width:'99%'}}>
+            <TextField type ="password"variant='outlined' label ='Palavra-passe' sx ={{width:'99%'}}>
             </TextField>
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
-            <TextField type ="password" variant='outlined' label ='Confirm Password' sx ={{width:'99%'}}>
+            <TextField type ="password" variant='outlined' label ='Confirmar Palavra-passe' sx ={{width:'99%'}}>
             </TextField>
           </Grid>
           <Grid item xs={12} sx={{height:'5vw',justifyContent:'center',alignItems:'center',display: 'flex'}}>
             <NavLink to='/Home'>
               <Button variant='contained'>
-                      Register
+                      Registar
               </Button>
             </NavLink>
           </Grid>
